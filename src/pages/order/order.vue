@@ -14,7 +14,7 @@
             <template #default="record">
               <!-- <a href="" class="el-icon-delete" @click.prevent = "deleteHandler(record.row.id)"></a> &nbsp;
               <a href="" class="el-icon-edit-outline" @click.prevent = "editHandler(record.row)"></a> &nbsp; -->
-              <a href=""  @click.prevent = "">详情</a>
+              <a href=""  @click.prevent = "detailHandler(record.row)">详情</a>
             </template>
           </el-table-column>
         </el-table>
@@ -28,13 +28,11 @@
           <el-table-column prop="waiterId" label="员工ID"></el-table-column>
           <el-table-column prop="customerId" label="顾客ID"></el-table-column>
           <el-table-column prop="addressId" label="地址ID"> </el-table-column>
-          <!-- <el-table-column label="操作" width="100px" align="center">
+          <el-table-column label="操作" width="100px" align="center">
             <template #default="record">
-              <a href="" class="el-icon-delete" @click.prevent = "deleteHandler(record.row.id)"></a> &nbsp;
-              <a href="" class="el-icon-edit-outline" @click.prevent = "editHandler(record.row)"></a> &nbsp;
-              <a href=""  @click.prevent = "">详情</a>
+              <a href=""  @click.prevent = "detailHandler(record.row)">详情</a>
             </template>
-          </el-table-column> -->
+          </el-table-column>
         </el-table>
       </el-tab-pane>
       <el-tab-pane label="待派单" name="four"> 
@@ -49,6 +47,7 @@
           <el-table-column label="操作" width="100px" align="center">
              <template #default="record">
               <a href=""  @click.prevent = "pdHandler(record.row.id)">派单</a>
+              <a href=""  @click.prevent = "detailHandler(record.row)">详情</a>
             </template>
           </el-table-column>
         </el-table>
@@ -65,6 +64,7 @@
           <el-table-column label="操作" width="100px" align="center">
             <template #default="record">
               <a href=""  @click.prevent = "qqHandler(record.row.id)">取消</a>
+              <a href=""  @click.prevent = "detailHandler(record.row)">详情</a>
             </template>
           </el-table-column>
         </el-table>
@@ -78,13 +78,11 @@
           <el-table-column prop="waiterId" label="员工ID"></el-table-column>
           <el-table-column prop="customerId" label="顾客ID"></el-table-column>
           <el-table-column prop="addressId" label="地址ID"> </el-table-column>
-          <!-- <el-table-column label="操作" width="100px" align="center">
+          <el-table-column label="操作" width="100px" align="center">
             <template #default="record">
-              <a href="" class="el-icon-delete" @click.prevent = "deleteHandler(record.row.id)"></a> &nbsp;
-              <a href="" class="el-icon-edit-outline" @click.prevent = "editHandler(record.row)"></a> &nbsp;
-              <a href=""  @click.prevent = "">详情</a>
+              <a href=""  @click.prevent = "detailHandler(record.row)">详情</a>
             </template>
-          </el-table-column> -->
+          </el-table-column>
         </el-table>
       </el-tab-pane>
       <el-tab-pane label="待确认" name="six">
@@ -96,13 +94,11 @@
           <el-table-column prop="waiterId" label="员工ID"></el-table-column>
           <el-table-column prop="customerId" label="顾客ID"></el-table-column>
           <el-table-column prop="addressId" label="地址ID"> </el-table-column>
-          <!-- <el-table-column label="操作" width="100px" align="center">
+          <el-table-column label="操作" width="100px" align="center">
             <template #default="record">
-              <a href="" class="el-icon-delete" @click.prevent = "deleteHandler(record.row.id)"></a> &nbsp;
-              <a href="" class="el-icon-edit-outline" @click.prevent = "editHandler(record.row)"></a> &nbsp;
-              <a href=""  @click.prevent = "">详情</a>
+              <a href=""  @click.prevent = "detailHandler(record.row)">详情</a>
             </template>
-          </el-table-column> -->
+          </el-table-column>
         </el-table>
       </el-tab-pane>
       <el-tab-pane label="已完成" name="seven">
@@ -114,13 +110,11 @@
           <el-table-column prop="waiterId" label="员工ID"></el-table-column>
           <el-table-column prop="customerId" label="顾客ID"></el-table-column>
           <el-table-column prop="addressId" label="地址ID"> </el-table-column>
-          <!-- <el-table-column label="操作" width="100px" align="center">
+          <el-table-column label="操作" width="100px" align="center">
             <template #default="record">
-              <a href="" class="el-icon-delete" @click.prevent = "deleteHandler(record.row.id)"></a> &nbsp;
-              <a href="" class="el-icon-edit-outline" @click.prevent = "editHandler(record.row)"></a> &nbsp;
-              <a href=""  @click.prevent = "">详情</a>
+              <a href=""  @click.prevent = "detailHandler(record.row)">详情</a>
             </template>
-          </el-table-column> -->
+          </el-table-column>
         </el-table>
       </el-tab-pane>
     </el-tabs>
@@ -189,7 +183,14 @@ export default {
         this.$message({type:"success",message:response.statusText});
        this.findAllorders();   
       })
-    }
+    },
+    // 订单详情
+    detailHandler(order){
+      this.$router.push({
+        path:'/order/details',
+        query:{order},
+      })
+    },
   }
 }
     

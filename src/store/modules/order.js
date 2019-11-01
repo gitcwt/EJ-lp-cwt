@@ -51,7 +51,7 @@ export default {
     // },
     //1.查询所有订单信息
     async findAllorders(context){
-      let response = await get("/order/findAll");
+      let response = await get("/order/query");
       context.commit("refreshorders",response.data);
       // console.log(response);
     },
