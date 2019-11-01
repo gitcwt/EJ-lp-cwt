@@ -178,7 +178,7 @@ export default {
     submitHandler(){
        this.sendOrder(this.waiterform)
         .then((response) => {
-        this.$message({type:"success",message:"成功"});
+        this.$message({type:"success",message:response.statusText});
         this.closeModal()
       })
     }

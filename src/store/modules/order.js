@@ -56,9 +56,10 @@ export default {
       // console.log(response);
     },
     async sendOrder(context,waiterform){
-      await get("/order/sendOrder",waiterform);
+      let response= await get("/order/sendOrder",waiterform);
       // console.log(response)
       context.commit("orderStatusFilter");
+      return response
 
     },
   //   //2.删除订单方法
