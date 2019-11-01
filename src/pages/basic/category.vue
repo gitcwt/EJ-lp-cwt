@@ -20,6 +20,7 @@
             class="upload-demo"
             action="http://134.175.154.93:6677/file/upload"
             :file-list="fileList"
+            :on-remove="removeHandler"
             :on-success="uploadSuccessHandler"
             list-type="picture">
             <el-button size="small" type="primary">点击上传</el-button>
@@ -117,6 +118,9 @@ export default {
        this.$message.error("上传异常！")
      }
     },
+     removeHandler(){
+      this.form.icon=""
+    },
     //2.增添栏目方法
     toAddHandler(){
       this.form = {};
@@ -143,6 +147,7 @@ export default {
     dialogCloseHandler() {
       this.$refs.categoryForm.clearValidate();
       this.closeModal();
+      this.fileList=[];
     },
     //5.修改栏目信息方法
     editHandler(row) {

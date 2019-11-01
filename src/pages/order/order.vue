@@ -37,24 +37,6 @@
           </el-table-column> -->
         </el-table>
       </el-tab-pane>
-      <el-tab-pane label="待接单" name="three">
-        <el-table :data="orderStatusFilter('待接单')" size="small" name="three">
-          <el-table-column type="selection" width="55"></el-table-column>
-          <el-table-column prop="orderTime" label="下单时间"></el-table-column>
-          <el-table-column prop="total" label="订单总额"></el-table-column>
-          <el-table-column prop="status" label="状态"></el-table-column>
-          <el-table-column prop="waiterId" label="员工ID"></el-table-column>
-          <el-table-column prop="customerId" label="顾客ID"></el-table-column>
-          <el-table-column prop="addressId" label="地址ID"> </el-table-column>
-          <el-table-column label="操作" width="100px" align="center">
-            <template #default="record">
-              <a href="" class="el-icon-delete" @click.prevent = "deleteHandler(record.row.id)"></a> &nbsp;
-              <a href="" class="el-icon-edit-outline" @click.prevent = "editHandler(record.row)"></a> &nbsp;
-              <a href=""  @click.prevent = "">详情</a>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-tab-pane>
       <el-tab-pane label="待派单" name="four"> 
         <el-table :data="orderStatusFilter('待派单')" size="small" name="four">
           <el-table-column type="selection" width="55"></el-table-column>
@@ -67,6 +49,22 @@
           <el-table-column label="操作" width="100px" align="center">
              <template #default="record">
               <a href=""  @click.prevent = "pdHandler(record.row.id)">派单</a>
+            </template>
+          </el-table-column>
+        </el-table>
+      </el-tab-pane>
+      <el-tab-pane label="待接单" name="three">
+        <el-table :data="orderStatusFilter('待接单')" size="small" name="three">
+          <el-table-column type="selection" width="55"></el-table-column>
+          <el-table-column prop="orderTime" label="下单时间"></el-table-column>
+          <el-table-column prop="total" label="订单总额"></el-table-column>
+          <el-table-column prop="status" label="状态"></el-table-column>
+          <el-table-column prop="waiterId" label="员工ID"></el-table-column>
+          <el-table-column prop="customerId" label="顾客ID"></el-table-column>
+          <el-table-column prop="addressId" label="地址ID"> </el-table-column>
+          <el-table-column label="操作" width="100px" align="center">
+            <template #default="record">
+              <a href=""  @click.prevent = "qqHandler(record.row.id)">取消</a>
             </template>
           </el-table-column>
         </el-table>
@@ -156,12 +154,12 @@ export default {
     this.findAllorders();
     },
     computed: {
+      ...mapState("waiter",["waiters"]),
       ...mapState("order",["orders","visible_pd"]),  
       ...mapGetters("order",["orderStatusFilter","countOrders"]),
-      ...mapState("waiter",["waiters"]),
     },
     methods: {
-    ...mapActions("order",["findAllorders","sendOrder"]),
+    ...mapActions("order",["findAllorders","sendOrder","cancelOrder"]),
     ...mapMutations("order",["closeModal","showModal"]),
 
     handleClick(tab,event) {
@@ -179,10 +177,20 @@ export default {
        this.sendOrder(this.waiterform)
         .then((response) => {
         this.$message({type:"success",message:response.statusText});
-        this.closeModal()
+        this.closeModal();
+       this.findAllorders();   
+      })
+    },
+    // 取消派单
+    qqHandler(id){
+      // alert(id)
+      this.cancelOrder(id)
+      .then((response) => {
+        this.$message({type:"success",message:response.statusText});
+       this.findAllorders();   
       })
     }
-     }
+  }
 }
     
 </script>

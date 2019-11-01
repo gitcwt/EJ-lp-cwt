@@ -55,12 +55,19 @@ export default {
       context.commit("refreshorders",response.data);
       // console.log(response);
     },
+    // 派单
     async sendOrder(context,waiterform){
       let response= await get("/order/sendOrder",waiterform);
       // console.log(response)
       context.commit("orderStatusFilter");
       return response
 
+    },
+    // 取消派单
+    async cancelOrder(context,orderId){
+      let response =await get("/order/cancelSendOrder?orderId="+orderId);
+      context.commit("orderStatusFilter");
+      return response
     },
   //   //2.删除订单方法
   //   async deleteorderById(context,id) {

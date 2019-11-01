@@ -29,6 +29,7 @@
             action="http://134.175.154.93:6677/file/upload"
             :file-list="fileList"
             :on-success="uploadSuccessHandler"
+            :on-remove="removeHandler"
             list-type="picture">
             <el-button size="small" type="primary">点击上传</el-button>
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
@@ -99,8 +100,8 @@ export default {
     this.findAllproducts(this.params)
   },
   computed: {
-    ...mapState("product",["products","visible","title"]),  
     ...mapState("category",["categories"]),
+    ...mapState("product",["products","visible","title"]),  
   },
   methods: {
     //动作
@@ -125,6 +126,9 @@ export default {
      }else{
        this.$message.error("上传异常！")
      }
+    },
+    removeHandler(){
+      this.form.photo=""
     },
     DetailHandler(product){
       this.$router.push({
