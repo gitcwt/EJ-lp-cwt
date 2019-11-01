@@ -115,7 +115,7 @@ export const asyncRoutes = [
         path: 'list',
         component: () => import('@/pages/customer/List'),
         name: 'customer',
-        meta: { title: '顾客管理', icon: 'edit', noCache: true }
+        meta: { title: '顾客管理', icon: 'peoples', noCache: true }
       },
       {
         path:"details",
@@ -148,39 +148,46 @@ export const asyncRoutes = [
   },{
     path: '/basic',
     component: Layout,
-    meta: { title: '基础管理', icon: 'edit', noCache: true },
+    meta: { title: '基础管理', icon: 'user', noCache: true },
     redirect: '/basic/basic',
     children: [
       {
         path: 'category',
         component: () => import('@/pages/basic/category'),
         name: 'category',
-        meta: { title: '栏目管理', icon: 'edit', noCache: true }
+        meta: { title: '栏目管理', icon: 'list', noCache: true }
       },
       {
         path:"product",
         component: () => import('@/pages/basic/product'),
         name: 'product',
-        meta: { title: '产品管理', icon: 'edit', noCache: true }
+        meta: { title: '产品管理', icon: 'component', noCache: true }
+      },
+      {
+        path:"c_details",
+        hidden:true,
+        component: () => import('@/pages/basic/c_details'),
+        name: 'c_details',
+        meta: { title: '产品详情', icon: 'component', noCache: true }
       }
     ]
   },{
     path: '/check',
     component: Layout,
-    meta: { title: '审核管理', icon: 'edit', noCache: true },
+    meta: { title: '审核管理', icon: 'tab', noCache: true },
     redirect: '/check/check',
     children: [
       {
         path: 'money',
         component: () => import('@/pages/check/money_check'),
         name: 'money',
-        meta: { title: '提现审核', icon: 'edit', noCache: true }
+        meta: { title: '提现审核', icon: 'skill', noCache: true }
       },
       {
         path:"waiter",
         component: () => import('@/pages/check/waiter_check'),
         name: 'waiter',
-        meta: { title: '员工审核', icon: 'edit', noCache: true }
+        meta: { title: '员工审核', icon: 'user', noCache: true }
       }
     ]
   },{
@@ -192,7 +199,7 @@ export const asyncRoutes = [
         path: 'order',
         component: () => import('@/pages/order/order'),
         name: 'order',
-        meta: { title: '订单管理', icon: 'edit', noCache: true }
+        meta: { title: '订单管理', icon: 'skill', noCache: true }
       }
     ]
   },
