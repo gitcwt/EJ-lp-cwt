@@ -3,7 +3,7 @@
     <el-tabs v-model="activeName"  @tab-click="handleClick">
       <el-tab-pane label="所有订单" name="first">
         <el-table :data="orderStatusFilter()" size="small" name="first">
-          <el-table-column type="selection" width="55"></el-table-column>
+          <el-table-column prop="id" label="订单ID"></el-table-column>
           <el-table-column prop="orderTime" label="下单时间"></el-table-column>
           <el-table-column prop="total" label="订单总额"></el-table-column>
           <el-table-column prop="status" label="状态"></el-table-column>
@@ -21,7 +21,7 @@
     </el-tab-pane>
       <el-tab-pane label="待支付" name="two"> 
         <el-table :data="orderStatusFilter('待支付')" size="small" name="two">
-          <el-table-column type="selection" width="55"></el-table-column>
+          <el-table-column prop="id" label="订单ID"></el-table-column>
           <el-table-column prop="orderTime" label="下单时间"></el-table-column>
           <el-table-column prop="total" label="订单总额"></el-table-column>
           <el-table-column prop="status" label="状态"></el-table-column>
@@ -37,7 +37,7 @@
       </el-tab-pane>
       <el-tab-pane label="待派单" name="four"> 
         <el-table :data="orderStatusFilter('待派单')" size="small" name="four">
-          <el-table-column type="selection" width="55"></el-table-column>
+          <el-table-column prop="id" label="订单ID"></el-table-column>
           <el-table-column prop="orderTime" label="下单时间"></el-table-column>
           <el-table-column prop="total" label="订单总额"></el-table-column>
           <el-table-column prop="status" label="状态"></el-table-column>
@@ -54,7 +54,7 @@
       </el-tab-pane>
       <el-tab-pane label="待接单" name="three">
         <el-table :data="orderStatusFilter('待接单')" size="small" name="three">
-          <el-table-column type="selection" width="55"></el-table-column>
+          <el-table-column prop="id" label="订单ID"></el-table-column>
           <el-table-column prop="orderTime" label="下单时间"></el-table-column>
           <el-table-column prop="total" label="订单总额"></el-table-column>
           <el-table-column prop="status" label="状态"></el-table-column>
@@ -71,7 +71,7 @@
       </el-tab-pane>
       <el-tab-pane label="待服务" name="five">
         <el-table :data="orderStatusFilter('待服务')" size="small" name="five">
-          <el-table-column type="selection" width="55"></el-table-column>
+          <el-table-column prop="id" label="订单ID"></el-table-column>
           <el-table-column prop="orderTime" label="下单时间"></el-table-column>
           <el-table-column prop="total" label="订单总额"></el-table-column>
           <el-table-column prop="status" label="状态"></el-table-column>
@@ -87,7 +87,7 @@
       </el-tab-pane>
       <el-tab-pane label="待确认" name="six">
         <el-table :data="orderStatusFilter('待确认')" size="small" name="six">
-          <el-table-column type="selection" width="55"></el-table-column>
+          <el-table-column prop="id" label="订单ID"></el-table-column>
           <el-table-column prop="orderTime" label="下单时间"></el-table-column>
           <el-table-column prop="total" label="订单总额"></el-table-column>
           <el-table-column prop="status" label="状态"></el-table-column>
@@ -103,7 +103,7 @@
       </el-tab-pane>
       <el-tab-pane label="已完成" name="seven">
         <el-table :data="orderStatusFilter('已完成')" size="small" name="seven">
-          <el-table-column type="selection" width="55"></el-table-column>
+          <el-table-column prop="id" label="订单ID"></el-table-column>
           <el-table-column prop="orderTime" label="下单时间"></el-table-column>
           <el-table-column prop="total" label="订单总额"></el-table-column>
           <el-table-column prop="status" label="状态"></el-table-column>

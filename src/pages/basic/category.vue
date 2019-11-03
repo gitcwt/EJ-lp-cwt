@@ -41,10 +41,9 @@
       <el-table-column prop="num" label="数量"></el-table-column>
       <el-table-column prop="icon" label="图标">
         <template v-slot:default="record">
-          <img :src="record.row.icon">
+          <img :src="record.row.icon" style="width:100px">
         </template>
       </el-table-column>
-      <el-table-column prop="parentId" label="上级栏目"></el-table-column>
       <el-table-column label="操作" width="100px" align="center">
         <template #default="record">
           <a href="" class="el-icon-delete" @click.prevent = "deleteHandler(record.row.id)"></a> &nbsp;

@@ -84,7 +84,7 @@ export default {
       rules:{
         name: [
           { required: true, message: '请输入产品名称', trigger: 'blur' },
-          { min: 2, max: 4, message: '长度在 2 到 4 个字符', trigger: 'blur' }
+          { min: 2, max: 8, message: '长度在 2 到 4 个字符', trigger: 'blur' }
         ],
         num:[
           { required: true, message: '请输入数量', trigger: 'blur' }
